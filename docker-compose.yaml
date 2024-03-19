@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  project-zomboid-server:
+    build:
+      context: .
+    env_file:
+      - ./.env
+    ports:
+      - "16261-16272:16261-16272/udp"
+    volumes:
+      - ./server:/home/steam/Zomboid
+    command: /home/steam/steamcmd/zomboid_server/start-server.sh -servername server -adminpassword $ZOMBOID_ADMIN_PASSWORD
